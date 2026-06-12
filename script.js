@@ -1,6 +1,7 @@
 const list = document.querySelector("ul");
 const buttonShowAll = document.querySelector(".show-all");
 const buttonMapAll = document.querySelector(".map-all");
+const sumAll = document.querySelector(".sum-all");
 
 function showAll(productsArray){
     let myLi = '';
@@ -28,5 +29,20 @@ function mapAllItens(){
 
 }
 
+function sumAllItens(){
+    const totalValue = menuOptions.reduce( (acc, curr) => acc + curr.price, 0)
+    
+    list.innerHTML = `
+        <li>
+            <p class="somar-tudo">O valor total dos itens é: R$ ${totalValue},00</p>
+        </li>
+    `
+
+    const somarTudo = document.querySelector(".somar-tudo")
+
+    somarTudo.style.padding = "10px";
+}
+
 buttonShowAll.addEventListener("click", () => showAll(menuOptions));
 buttonMapAll.addEventListener("click", mapAllItens);
+sumAll.addEventListener("click", sumAllItens);
